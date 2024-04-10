@@ -10,7 +10,20 @@
     <v-main class="bg-blue-lighten-5">
       <router-view v-slot="{ Component }">
         <transition name="shrink-explode">
-          <component :is="Component" />
+          <v-container>
+            <v-row>
+              <v-col
+                v-for="product in products"
+                :key="product.id"
+                cols="12"
+                sm="6"
+                md="4"
+                lg="3">
+                <StoreItem :product="product"></StoreItem>
+                <component :is="Component" />
+              </v-col>
+            </v-row>
+          </v-container>
         </transition>
       </router-view>
     </v-main>
@@ -22,8 +35,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, computed, onBeforeMount  } from "vue";
+import { useProductStore } from "./stores/ProductStore";
+import StoreItem from "./components/StoreItem.vue";
 
+const productStore = useProductStore();
+onBeforeMount( () => {
+  productStore.init();
+});
+const products = computed(() => productStore.products);
 const links = ref([
   { text: "Home", to: "/", icon: "mdi-home" },
   { text: "Electronics", to: "/electronics", icon: "mdi-laptop" },
