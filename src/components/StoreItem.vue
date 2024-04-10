@@ -1,5 +1,5 @@
 <template>
-  <v-card class="flex-column">
+  <v-card class="flex-column" height="400">
     <v-card-title>
       {{ product.data.name }}
     </v-card-title>
@@ -15,9 +15,9 @@
     <v-container>
       <v-row>
         <v-spacer/>
-        <b>Stock:</b>{{ product.data.stock }} items
+        <v-icon icon="mdi-store"/> {{ product.data.stock }} items
         <v-spacer/>
-        <b>Price:</b> ${{ product.data.price }}
+        <v-icon icon="mdi-currency-usd"/> ${{ product.data.price }}
         <v-spacer/>
       </v-row>
     </v-container>
