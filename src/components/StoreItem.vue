@@ -1,5 +1,5 @@
 <template>
-  <v-card class="flex-column" height="420">
+  <v-card class="d-flex flex-column" height="420">
     <v-card-title>
       {{ product.data.name }}
     </v-card-title>
