@@ -8,7 +8,7 @@
         sm="6"
         md="4"
         lg="3">
-        <StoreItem :product="product"></StoreItem>
+        <StoreItem id="storeItem" :product="product"></StoreItem>
       </v-col>
     </v-row>
   </v-container>
